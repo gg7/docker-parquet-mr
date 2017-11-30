@@ -23,6 +23,8 @@ RUN echo '2017-12-01' && \
       unzip && \
     rm -rf /var/lib/apt/lists/* /var/cache/*
 
+# Note: "https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz" != "https://github.com/google/protobuf/archive/v2.5.0.tar.gz"
+# See https://github.com/google/protobuf/issues/2025
 ARG PROTOBUF_VERSION=3.2.0
 RUN wget https://github.com/google/protobuf/archive/v$PROTOBUF_VERSION.tar.gz -O protobuf.tar.gz && \
     tar xzf protobuf.tar.gz && \
