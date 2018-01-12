@@ -6,7 +6,9 @@ Building Apache Parquet with Docker.
 
 I wanted to build jars for `parquet-cli` and `parquet-tools` on Gentoo.
 
-The upstream documentation isn't very good and is also Debian specific.
+The upstream documentation is
+[wrong](https://github.com/apache/parquet-mr/pull/438) and is also Debian
+specific.
 
 # Usage
 
