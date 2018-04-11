@@ -1,6 +1,6 @@
 FROM gg77/jdk-8-oracle
 
-RUN echo '2017-12-01' && \
+RUN echo '2018-04-01' && \
     apt-get -qq update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install \
       autoconf \
