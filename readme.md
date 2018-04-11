@@ -25,6 +25,7 @@ Extracting the jars:
 george@george:~$ docker run -d --name parquet-mr parquet-mr sleep 3600
 george@george:~$ docker cp parquet-mr:/parquet-mr/parquet-cli/target/parquet-cli-1.10.1-SNAPSHOT-runtime.jar ./
 george@george:~$ docker cp parquet-mr:/parquet-mr/parquet-tools/target/parquet-tools-1.10.1-SNAPSHOT.jar ./
+george@george:~$ docker rm -f parquet-mr
 ```
 
 # Using parquet-tools
