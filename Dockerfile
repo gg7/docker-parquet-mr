@@ -52,6 +52,8 @@ RUN git clone --depth 1 https://github.com/apache/parquet-mr
 WORKDIR /parquet-mr
 ENV HADOOP_PROFILE=default
 
+# "-T 1C" might get you banned from jitpack.io if you have too many cores, or run docker-build too often:
+# "The owner of this website (jitpack.io) has banned you temporarily from accessing this website."
 RUN LC_ALL=C mvn -T 1C install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true
 
 WORKDIR /parquet-mr/parquet-tools
