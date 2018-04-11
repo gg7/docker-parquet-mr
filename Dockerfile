@@ -37,7 +37,7 @@ RUN wget https://github.com/google/protobuf/archive/v$PROTOBUF_VERSION.tar.gz -O
     rm ../protobuf.tar.gz
 
 # https://issues.apache.org/jira/browse/THRIFT-1300
-ARG THRIFT_VERSION=0.7.0
+ARG THRIFT_VERSION=0.9.3
 RUN wget https://archive.apache.org/dist/thrift/$THRIFT_VERSION/thrift-$THRIFT_VERSION.tar.gz -O thrift.tar.gz && \
     tar xzf thrift.tar.gz && \
     cd thrift* && \
