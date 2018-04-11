@@ -36,14 +36,14 @@ RUN wget https://github.com/google/protobuf/archive/v$PROTOBUF_VERSION.tar.gz -O
     ldconfig && \
     rm ../protobuf.tar.gz
 
-# https://issues.apache.org/jira/browse/THRIFT-1300
+# parallel builds might fail with older versions: https://issues.apache.org/jira/browse/THRIFT-1300
 ARG THRIFT_VERSION=0.9.3
 RUN wget https://archive.apache.org/dist/thrift/$THRIFT_VERSION/thrift-$THRIFT_VERSION.tar.gz -O thrift.tar.gz && \
     tar xzf thrift.tar.gz && \
     cd thrift* && \
     chmod +x ./configure && \
     ./configure --disable-gen-erl --disable-gen-hs --without-ruby --without-haskell --without-erlang --without-php && \
-    make install && \
+    make -j $(if dpkg --compare-versions "$THRIFT_VERSION" ge "0.9.2"; then nproc; else echo 1; fi) install && \
     rm ../thrift.tar.gz
 
 RUN git clone https://github.com/apache/parquet-mr
