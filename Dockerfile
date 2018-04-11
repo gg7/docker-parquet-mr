@@ -47,10 +47,9 @@ RUN wget https://archive.apache.org/dist/thrift/$THRIFT_VERSION/thrift-$THRIFT_V
     rm ../thrift.tar.gz
 
 # COPY parquet-mr parquet-mr
-RUN git clone https://github.com/apache/parquet-mr
+RUN git clone --depth 1 https://github.com/apache/parquet-mr
 
-WORKDIR parquet-mr
-
+WORKDIR /parquet-mr
 ENV HADOOP_PROFILE=default
 
 RUN LC_ALL=C mvn install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true
