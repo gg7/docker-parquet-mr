@@ -53,5 +53,10 @@ WORKDIR /parquet-mr
 ENV HADOOP_PROFILE=default
 
 RUN LC_ALL=C mvn install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true
-WORKDIR parquet-cli
-RUN mvn clean install -DskipTests
+
+WORKDIR /parquet-mr/parquet-tools
+# Without "-Plocal" here, `java -jar parquet-tools.jar --help` doesn't output anything.
+RUN mvn package -Plocal -DskipTests
+
+WORKDIR /parquet-mr/parquet-cli
+RUN mvn package -DskipTests
