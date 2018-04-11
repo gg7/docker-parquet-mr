@@ -52,11 +52,11 @@ RUN git clone --depth 1 https://github.com/apache/parquet-mr
 WORKDIR /parquet-mr
 ENV HADOOP_PROFILE=default
 
-RUN LC_ALL=C mvn install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true
+RUN LC_ALL=C mvn -T 1C install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true
 
 WORKDIR /parquet-mr/parquet-tools
 # Without "-Plocal" here, `java -jar parquet-tools.jar --help` doesn't output anything.
-RUN mvn package -Plocal -DskipTests
+RUN mvn -T 1C package -Plocal -DskipTests
 
 WORKDIR /parquet-mr/parquet-cli
-RUN mvn package -DskipTests
+RUN mvn -T 1C package -DskipTests
