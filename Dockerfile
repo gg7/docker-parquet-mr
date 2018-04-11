@@ -46,7 +46,9 @@ RUN wget https://archive.apache.org/dist/thrift/$THRIFT_VERSION/thrift-$THRIFT_V
     make -j $(if dpkg --compare-versions "$THRIFT_VERSION" ge "0.9.2"; then nproc; else echo 1; fi) install && \
     rm ../thrift.tar.gz
 
+# COPY parquet-mr parquet-mr
 RUN git clone https://github.com/apache/parquet-mr
+
 WORKDIR parquet-mr
 
 ENV HADOOP_PROFILE=default
